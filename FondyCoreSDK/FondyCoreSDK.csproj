@@ -6,8 +6,7 @@
 		<Authors>Eugene Zavalko</Authors>
 		<Company>EaZySoft</Company>
 		<Product>FondyCoreSDK</Product>
-		<AssemblyVersion>1.0.1</AssemblyVersion>
-		<FileVersion>1.0.1</FileVersion>
+		<Version>1.0.1</Version>
 		<Description>A payment service provider (PSP) offers shops online services for accepting electronic payments by a variety of payment methods including credit card, bank-based payments such as direct debit, bank transfer, and real-time bank transfer based on online banking. Typically, they use a software as a service model and form a single payment gateway for their clients (merchants) to multiple payment methods.</Description>
 		<Copyright>Copyright 2021</Copyright>
 		<PackageProjectUrl>https://fondy.eu</PackageProjectUrl>
