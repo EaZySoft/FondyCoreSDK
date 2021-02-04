@@ -11,13 +11,17 @@
 		<Copyright>Copyright 2021</Copyright>
 		<PackageProjectUrl>https://fondy.eu</PackageProjectUrl>
 		<PackageTags>sdk payment fondy</PackageTags>
-		<PackageIcon>fondy-logo.svg</PackageIcon>
+		<PackageIcon>fondy-logo.png</PackageIcon>
 	</PropertyGroup>
 
 	<ItemGroup>
 	  <Compile Remove="Properties\**" />
 	  <EmbeddedResource Remove="Properties\**" />
 	  <None Remove="Properties\**" />
+	  <None Include="..\fondy-logo.png">
+	    <Pack>True</Pack>
+	    <PackagePath></PackagePath>
+	  </None>
 	  <None Include="..\fondy-logo.png">
 	    <Pack>True</Pack>
 	    <PackagePath></PackagePath>
