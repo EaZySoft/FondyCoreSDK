@@ -27,6 +27,6 @@ jobs:
       with:   
        PROJECT_FILE_PATH: FondyCoreSDK/FondyCoreSDK.csproj
        VERSION_FILE_PATH: FondyCoreSDK/FondyCoreSDK.nuspec
-       VERSION_REGEX: ^\s*<Version>(.*)<\/Version>\s*$
+       VERSION_REGEX: ^\s*<version>(.*)<\/version>\s*$
        TAG_FORMAT: '*'
        NUGET_KEY: ${{secrets.NUGET_API_KEY}} 
