@@ -11,8 +11,8 @@ namespace FondyCoreSDKTest
         [TestMethod]
         public void TestCheckout()
         {
-            Config.Init(MerchantId, SecretKey, ContentType);
-            Config.Endpoint(Endpoint);
+            FondyConfig.Init(MerchantId, SecretKey, ContentType);
+            FondyConfig.Endpoint(Endpoint);
 
             string orderId = Guid.NewGuid().ToString();
 
@@ -33,8 +33,8 @@ namespace FondyCoreSDKTest
         [TestMethod]
         public void TestCheckoutXml()
         {
-            Config.Init(MerchantId, SecretKey, "xml");
-            Config.Endpoint(Endpoint);
+            FondyConfig.Init(MerchantId, SecretKey, "xml");
+            FondyConfig.Endpoint(Endpoint);
 
             string orderId = Guid.NewGuid().ToString();
 
@@ -55,8 +55,8 @@ namespace FondyCoreSDKTest
         [TestMethod]
         public void TestToken()
         {
-            Config.Init(MerchantId, SecretKey, ContentType);
-            Config.Endpoint(Endpoint);
+            FondyConfig.Init(MerchantId, SecretKey, ContentType);
+            FondyConfig.Endpoint(Endpoint);
             var req = new TokenRequest
             {
                 order_id = Guid.NewGuid().ToString(),
@@ -74,8 +74,8 @@ namespace FondyCoreSDKTest
         [TestMethod]
         public void TestXmlToken()
         {
-            Config.Init(MerchantId, SecretKey, "xml");
-            Config.Endpoint(Endpoint);
+            FondyConfig.Init(MerchantId, SecretKey, "xml");
+            FondyConfig.Endpoint(Endpoint);
 
             var req = new TokenRequest
             {
@@ -94,8 +94,8 @@ namespace FondyCoreSDKTest
         [TestMethod]
         public void TestFormToken()
         {
-            Config.Init(MerchantId, SecretKey, "form");
-            Config.Endpoint(Endpoint);
+            FondyConfig.Init(MerchantId, SecretKey, "form");
+            FondyConfig.Endpoint(Endpoint);
 
             var req = new TokenRequest
             {

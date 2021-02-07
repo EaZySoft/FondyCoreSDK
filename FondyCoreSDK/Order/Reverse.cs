@@ -17,8 +17,8 @@ namespace FondyCoreSDK.Order
         public ReverseByOrderResponse ByOrderID(ReverseByOrder req)
         {
             ReverseByOrderResponse response;
-            req.merchant_id = Config.MerchantId;
-            req.version = Config.Protocol;
+            req.merchant_id = FondyConfig.MerchantId;
+            req.version = FondyConfig.Protocol;
             req.signature = Signature.GetRequestSignature(RequiredParams.GetHashProperties(req));
             try
             {
@@ -29,7 +29,7 @@ namespace FondyCoreSDK.Order
                 response = new ReverseByOrderResponse {Error = c};
             }
             
-            if (response.data != null && Config.Protocol == "2.0")
+            if (response.data != null && FondyConfig.Protocol == "2.0")
             {
                 return JsonFormatter.ConvertFromJson<ReverseByOrderResponse>(response.data, true, "order");
             }
@@ -44,7 +44,7 @@ namespace FondyCoreSDK.Order
         public ReverseByPaymentResponse ByPaymentID(ReverseByPayment req)
         {
             ReverseByPaymentResponse response;
-            req.merchant_id = Config.MerchantId;
+            req.merchant_id = FondyConfig.MerchantId;
             req.signature = Signature.GetRequestSignature(RequiredParams.GetHashProperties(req));
             try
             {
@@ -55,7 +55,7 @@ namespace FondyCoreSDK.Order
                 response = new ReverseByPaymentResponse {Error = c};
             }
             
-            if (response.data != null && Config.Protocol == "2.0")
+            if (response.data != null && FondyConfig.Protocol == "2.0")
             {
                 return JsonFormatter.ConvertFromJson<ReverseByPaymentResponse>(response.data, true, "order");
             }
@@ -79,7 +79,7 @@ namespace FondyCoreSDK.Order
                 response = new ReverseByTransactionId {Error = c};
             }
             
-            if (response.data != null && Config.Protocol == "2.0")
+            if (response.data != null && FondyConfig.Protocol == "2.0")
             {
                 return JsonFormatter.ConvertFromJson<ReverseByTransactionId>(response.data, true, "order");
             }

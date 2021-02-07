@@ -11,11 +11,11 @@ namespace FondyCoreSDK.Checkout
         public SettlementResponse Post(SettlementRequest req)
         {
             SettlementResponse response;
-            string defaultProtocol = Config.Protocol;
-            string defaultContentType = Config.ContentType;
-            Config.ContentType = "json";
-            Config.Protocol = "2.0";
-            req.merchant_id = Config.MerchantId;
+            string defaultProtocol = FondyConfig.Protocol;
+            string defaultContentType = FondyConfig.ContentType;
+            FondyConfig.ContentType = "json";
+            FondyConfig.Protocol = "2.0";
+            req.merchant_id = FondyConfig.MerchantId;
             req.order_type = "settlement";
             try
             {
@@ -26,10 +26,10 @@ namespace FondyCoreSDK.Checkout
                 response = new SettlementResponse {Error = c};
             }
 
-            if (response.data != null && Config.Protocol == "2.0")
+            if (response.data != null && FondyConfig.Protocol == "2.0")
             {
-                Config.Protocol = defaultProtocol;
-                Config.ContentType = defaultContentType;
+                FondyConfig.Protocol = defaultProtocol;
+                FondyConfig.ContentType = defaultContentType;
                 return JsonFormatter.ConvertFromJson<SettlementResponse>(response.data, true, "order");
             }
 

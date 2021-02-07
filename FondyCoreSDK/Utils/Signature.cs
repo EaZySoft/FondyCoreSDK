@@ -12,10 +12,10 @@ namespace FondyCoreSDK.Utils
         /// </summary>
         public static string GetRequestSignatureV2(string data, bool credit = false)
         {
-            string secret = Config.SecretKey;
+            string secret = FondyConfig.SecretKey;
             if (credit)
             {
-                secret = Config.CreditKey;
+                secret = FondyConfig.CreditKey;
             }
             string signature = secret + "|" + data;
             return GetSha1(signature).ToLower();
@@ -26,10 +26,10 @@ namespace FondyCoreSDK.Utils
         public static string GetRequestSignature(IEnumerable<string> hashKeys, bool credit = false)
         {
             string signature = string.Join("|", hashKeys);
-            string secret = Config.SecretKey;
+            string secret = FondyConfig.SecretKey;
             if (credit)
             {
-                secret = Config.CreditKey;
+                secret = FondyConfig.CreditKey;
             }
             signature = secret + "|" + signature;
             return GetSha1(signature).ToLower();

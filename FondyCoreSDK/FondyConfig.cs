@@ -1,6 +1,6 @@
 namespace FondyCoreSDK
 {
-    public static class Config
+    public static class FondyConfig
     {
         /// <summary>
         /// Merchant identification
@@ -47,6 +47,14 @@ namespace FondyCoreSDK
         public static void Init(int merchantId, string secretKey, string contentType = "json", string creditKey = "")
         {
             MerchantId = merchantId;
+            SecretKey = secretKey;
+            ContentType = contentType;
+            CreditKey = creditKey;
+        }
+
+        public static void Init(string merchantId, string secretKey, string contentType = "json", string creditKey = "")
+        {
+            MerchantId = int.Parse(merchantId);
             SecretKey = secretKey;
             ContentType = contentType;
             CreditKey = creditKey;

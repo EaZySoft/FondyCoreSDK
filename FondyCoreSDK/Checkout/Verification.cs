@@ -12,9 +12,9 @@ namespace FondyCoreSDK.Checkout
         public VerificationResponse Post(VerificationRequest req)
         {
             VerificationResponse response;
-            req.merchant_id = Config.MerchantId;
+            req.merchant_id = FondyConfig.MerchantId;
             req.verification = "Y";
-            req.version = Config.Protocol;
+            req.version = FondyConfig.Protocol;
 
             if (req.verification_type == null)
             {
@@ -31,7 +31,7 @@ namespace FondyCoreSDK.Checkout
                 response = new VerificationResponse {Error = c};
             }
 
-            if (response.data != null && Config.Protocol == "2.0")
+            if (response.data != null && FondyConfig.Protocol == "2.0")
             {
                 return JsonFormatter.ConvertFromJson<VerificationResponse>(response.data, true, "order");
             }

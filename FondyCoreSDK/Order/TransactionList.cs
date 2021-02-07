@@ -13,10 +13,10 @@ namespace FondyCoreSDK.Order
         public TransactionListResponse Post(TransactionListRequest req)
         {
             TransactionListResponse response;
-            req.merchant_id = Config.MerchantId;
+            req.merchant_id = FondyConfig.MerchantId;
             req.signature = Signature.GetRequestSignature(RequiredParams.GetHashProperties(req));
             // In this api only json allowed
-            Config.ContentType = "json";
+            FondyConfig.ContentType = "json";
             try
             {
                 response = Client.Invoke<TransactionListRequest, TransactionListResponse>(req, req.ActionUrl, false);

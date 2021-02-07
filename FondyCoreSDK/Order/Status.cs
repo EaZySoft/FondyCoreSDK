@@ -12,8 +12,8 @@ namespace FondyCoreSDK.Order
         public StatusResponse StatusByOrderId(StatusByOrderRequest req)
         {
             StatusResponse response;
-            req.merchant_id = Config.MerchantId;
-            req.version = Config.Protocol;
+            req.merchant_id = FondyConfig.MerchantId;
+            req.version = FondyConfig.Protocol;
             req.signature = Signature.GetRequestSignature(RequiredParams.GetHashProperties(req));
             try
             {
@@ -24,7 +24,7 @@ namespace FondyCoreSDK.Order
                 response = new StatusResponse {Error = c};
             }
 
-            if (response.data != null && Config.Protocol == "2.0")
+            if (response.data != null && FondyConfig.Protocol == "2.0")
             {
                 return JsonFormatter.ConvertFromJson<StatusResponse>(response.data, true, "order");
             }
@@ -35,8 +35,8 @@ namespace FondyCoreSDK.Order
         public StatusResponse StatusByPaymentId(StatusByPaymentRequest req)
         {
             StatusResponse response;
-            req.merchant_id = Config.MerchantId;
-            req.version = Config.Protocol;
+            req.merchant_id = FondyConfig.MerchantId;
+            req.version = FondyConfig.Protocol;
             req.signature = Signature.GetRequestSignature(RequiredParams.GetHashProperties(req));
             try
             {
@@ -47,7 +47,7 @@ namespace FondyCoreSDK.Order
                 response = new StatusResponse {Error = c};
             }
 
-            if (response.data != null && Config.Protocol == "2.0")
+            if (response.data != null && FondyConfig.Protocol == "2.0")
             {
                 return JsonFormatter.ConvertFromJson<StatusResponse>(response.data, true, "order");
             }

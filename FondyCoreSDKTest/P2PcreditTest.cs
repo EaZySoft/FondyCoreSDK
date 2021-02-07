@@ -13,8 +13,8 @@ namespace FondyCoreSDKTest
         [TestMethod]
         public void P2PTest()
         {
-            Config.Init(MerchantId, SecretKey, ContentType, CreditKey);
-            Config.Endpoint(Endpoint);
+            FondyConfig.Init(MerchantId, SecretKey, ContentType, CreditKey);
+            FondyConfig.Endpoint(Endpoint);
 
             string orderId = Guid.NewGuid().ToString();
 

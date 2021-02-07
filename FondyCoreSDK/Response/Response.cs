@@ -102,7 +102,7 @@ namespace FondyCoreSDK.Response
         {
             if (type == null)
             {
-                type = Config.ContentType;
+                type = FondyConfig.ContentType;
             }
 
             NameValueCollection parsed = null;

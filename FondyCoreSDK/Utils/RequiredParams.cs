@@ -26,7 +26,7 @@ namespace FondyCoreSDK.Utils
             T data;
             if (type == null)
             {
-                type = Config.ContentType;
+                type = FondyConfig.ContentType;
             }
 
             switch (type)
@@ -70,7 +70,7 @@ namespace FondyCoreSDK.Utils
         public static string ConvertRequestByContentType<T>(T obj)
         {
             string data;
-            switch (Config.ContentType)
+            switch (FondyConfig.ContentType)
             {
                 case "xml":
                     data = XmlFormatter.ConvertToXml(obj);
@@ -120,7 +120,7 @@ namespace FondyCoreSDK.Utils
         private static string SetAsString(object obj)
         {
             string data;
-            switch (Config.ContentType)
+            switch (FondyConfig.ContentType)
             {
                 case "xml":
                     data = XmlFormatter.ConvertToXmlSimple(obj);

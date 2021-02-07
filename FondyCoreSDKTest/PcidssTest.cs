@@ -11,8 +11,8 @@ namespace FondyCoreSDKTest
         [TestMethod]
         public void PcidssStepOne()
         {
-            Config.Init(MerchantId, SecretKey, ContentType);
-            Config.Endpoint(Endpoint);
+            FondyConfig.Init(MerchantId, SecretKey, ContentType);
+            FondyConfig.Endpoint(Endpoint);
 
             string orderId = Guid.NewGuid().ToString();
 
@@ -37,8 +37,8 @@ namespace FondyCoreSDKTest
         [TestMethod]
         public void PcidssStepTwo()
         {
-            Config.Init(MerchantId, SecretKey, "form");
-            Config.Endpoint(Endpoint);
+            FondyConfig.Init(MerchantId, SecretKey, "form");
+            FondyConfig.Endpoint(Endpoint);
 
             var req = new StepOneRequest()
             {

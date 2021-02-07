@@ -12,8 +12,8 @@ namespace FondyCoreSDK.P2pcredit
         public P2PcreditResponse Post(P2PcreditRequest req)
         {
             P2PcreditResponse response;
-            req.merchant_id = Config.MerchantId;
-            req.version = Config.Protocol;
+            req.merchant_id = FondyConfig.MerchantId;
+            req.version = FondyConfig.Protocol;
             req.signature = Signature.GetRequestSignature(RequiredParams.GetHashProperties(req), true);
             try
             {
@@ -24,7 +24,7 @@ namespace FondyCoreSDK.P2pcredit
                 response = new P2PcreditResponse {Error = c};
             }
 
-            if (response.data != null && Config.Protocol == "2.0")
+            if (response.data != null && FondyConfig.Protocol == "2.0")
             {
                 return JsonFormatter.ConvertFromJson<P2PcreditResponse>(response.data, true, "order");
             }

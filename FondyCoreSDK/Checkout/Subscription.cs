@@ -13,13 +13,13 @@ namespace FondyCoreSDK.Checkout
         public SubscriptionResponse Post(SubscriptionRequest request)
         {
             SubscriptionResponse response;
-            string defaultProtocol = Config.Protocol;
-            string defaultContentType = Config.ContentType;
-            Config.ContentType = "json";
-            Config.Protocol = "2.0";
+            string defaultProtocol = FondyConfig.Protocol;
+            string defaultContentType = FondyConfig.ContentType;
+            FondyConfig.ContentType = "json";
+            FondyConfig.Protocol = "2.0";
 
-            request.merchant_id = Config.MerchantId;
-            request.version = Config.Protocol;
+            request.merchant_id = FondyConfig.MerchantId;
+            request.version = FondyConfig.Protocol;
             request.subscription = "Y";
             request.signature = Signature.GetRequestSignature(RequiredParams.GetHashProperties(request));
 
@@ -32,10 +32,10 @@ namespace FondyCoreSDK.Checkout
                 response = new SubscriptionResponse {Error = c};
             }
 
-            if (response.data != null && Config.Protocol == "2.0")
+            if (response.data != null && FondyConfig.Protocol == "2.0")
             {
-                Config.Protocol = defaultProtocol;
-                Config.ContentType = defaultContentType;
+                FondyConfig.Protocol = defaultProtocol;
+                FondyConfig.ContentType = defaultContentType;
                 return JsonFormatter.ConvertFromJson<SubscriptionResponse>(response.data, true, "order");
             }
 

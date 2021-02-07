@@ -8,8 +8,8 @@ namespace FondyCoreSDK.Order
         public AtolResponse Post(AtolRequest req)
         {
             AtolResponse response;
-            req.merchant_id = Config.MerchantId;
-            req.version = Config.Protocol;
+            req.merchant_id = FondyConfig.MerchantId;
+            req.version = FondyConfig.Protocol;
             req.signature = Signature.GetRequestSignature(RequiredParams.GetHashProperties(req));
             try
             {

@@ -12,8 +12,8 @@ namespace FondyCoreSDK.Checkout
         public TokenResponse Post(TokenRequest req)
         {
             TokenResponse response;
-            req.merchant_id = Config.MerchantId;
-            req.version = Config.Protocol;
+            req.merchant_id = FondyConfig.MerchantId;
+            req.version = FondyConfig.Protocol;
             req.signature = Signature.GetRequestSignature(RequiredParams.GetHashProperties(req));
 
             try
@@ -25,7 +25,7 @@ namespace FondyCoreSDK.Checkout
                 response = new TokenResponse {Error = c};
             }
 
-            if (response.data != null && Config.Protocol == "2.0")
+            if (response.data != null && FondyConfig.Protocol == "2.0")
             {
                 return JsonFormatter.ConvertFromJson<TokenResponse>(response.data, true, "order");
             }

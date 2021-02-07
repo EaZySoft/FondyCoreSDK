@@ -7,7 +7,7 @@ using FondyCoreSDK.Utils;
 
 namespace FondyCoreSDK
 {
-    public static class Client
+    internal static class Client
     {
         private static int _statusCode;
         private static string _response;
@@ -33,10 +33,10 @@ namespace FondyCoreSDK
         )
         {
             string data;
-            if (Config.Protocol == "2.0")
+            if (FondyConfig.Protocol == "2.0")
             {
                 // In protocol v2 Only json allowed
-                if (Config.ContentType != "json")
+                if (FondyConfig.ContentType != "json")
                 {
                     throw new ClientException
                     {
@@ -52,10 +52,10 @@ namespace FondyCoreSDK
                 data = RequiredParams.ConvertRequestByContentType(request);
             }
 
-            string uriString = Config.Endpoint(null) + actionUrl;
+            string uriString = FondyConfig.Endpoint(null) + actionUrl;
 
             HttpWebRequest httpRequest = WebRequest.CreateHttp(new Uri(uriString));
-            httpRequest.ContentType = GetContentTypeHeader(Config.ContentType);
+            httpRequest.ContentType = GetContentTypeHeader(FondyConfig.ContentType);
             httpRequest.UserAgent = _agent;
             httpRequest.Method = _method;
 
